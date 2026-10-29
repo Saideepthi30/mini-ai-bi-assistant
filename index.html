@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini BI Assistant</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="eyebrow">SALES INTELLIGENCE</div>
+      <h1>Mini BI Assistant</h1>
+      <p>Ask a question in plain English. Every answer is calculated from the loaded sales database.</p>
+    </header>
+
+    <section class="metrics" id="metrics">
+      <article><span>Valid transactions</span><strong id="transactions">—</strong></article>
+      <article><span>Total revenue</span><strong id="revenue">—</strong></article>
+      <article><span>Products</span><strong id="products">—</strong></article>
+      <article><span>Regions</span><strong id="regions">—</strong></article>
+    </section>
+
+    <section class="panel">
+      <label for="question">Ask your sales question</label>
+      <textarea id="question" rows="2" placeholder="e.g. Which product generated the highest revenue?"></textarea>
+      <div class="actions">
+        <button id="ask">Ask question</button>
+        <span id="status" role="status"></span>
+      </div>
+      <div class="examples">
+        <span>Try:</span>
+        <button class="example">What is the total revenue?</button>
+        <button class="example">Which product generated the highest revenue?</button>
+        <button class="example">What is the monthly revenue trend?</button>
+        <button class="example">Which region generated the highest sales?</button>
+        <button class="example">How did revenue change between January and February?</button>
+      </div>
+    </section>
+
+    <section class="panel result" id="result" hidden>
+      <div class="result-label">ANSWER FROM DATABASE</div>
+      <h2 id="answer"></h2>
+      <div id="data"></div>
+      <details>
+        <summary>View SQL used</summary>
+        <pre id="sql"></pre>
+        <p class="note">This SQL is executed against SQLite; the answer is not generated from an invented example.</p>
+      </details>
+    </section>
+    <footer>Revenue = quantity × unit price − discount. Returned and invalid transactions are excluded.</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
